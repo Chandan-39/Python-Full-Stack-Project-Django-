@@ -1,0 +1,63 @@
+{% extends 'delivery/base.html' %}
+{% block content %}
+<style>
+  form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px 25px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 20px;
+  }
+
+  form input, form select, form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 6px;
+    border: 1.8px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: #FF6B00;
+    box-shadow: 0 0 5px rgba(255, 107, 0, 0.5);
+  }
+
+  button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 14px;
+    background-color: #FF6B00;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #e85c00;
+  }
+</style>
+
+<div style="margin-top:50px"></div>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

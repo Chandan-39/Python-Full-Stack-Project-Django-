@@ -1,0 +1,64 @@
+{% extends "delivery/base.html" %}
+{% block content %}
+<style>
+  form {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px 25px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 20px;
+  }
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.8px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-top: 6px;
+    transition: border-color 0.3s ease;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    outline: none;
+    border-color: #FF6B00;
+    box-shadow: 0 0 6px rgba(255, 107, 0, 0.5);
+  }
+  button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 14px;
+    background-color: #FF6B00;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #e85c00;
+  }
+</style>
+
+<form method="POST" action="{% url 'delivery:handle_signin' %}">
+  {% csrf_token %}
+  <label>Username</label>
+  <input type="text" name="username" required />
+
+  <label>Password</label>
+  <input type="password" name="password" required />
+
+  <button type="submit">Sign In</button>
+</form>
+{% endblock %}

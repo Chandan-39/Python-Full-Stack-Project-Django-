@@ -1,0 +1,89 @@
+{% extends "delivery/base.html" %}
+{% block content %}
+<style>
+    body {
+        background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-container {
+        max-width: 500px;
+        margin: 60px auto;
+        background-color: rgba(255, 255, 255, 0.97);
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #FF6B00;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+
+    button[type="submit"] {
+        margin-top: 25px;
+        width: 100%;
+        padding: 12px;
+        background-color: #FF6B00;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #e85c00;
+    }
+</style>
+
+<div class="form-container">
+    <h2>Add Menu</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label>Restaurant Name:</label>
+        {{ form.Res_name }}
+
+        <label>Food Category:</label>
+        {{ form.Food_cat }}
+
+        <label>Rating:</label>
+        {{ form.rating }}
+
+        <label>Image:</label>
+        {{ form.img }}
+
+        <label>Address:</label>
+        {{ form.address }}
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

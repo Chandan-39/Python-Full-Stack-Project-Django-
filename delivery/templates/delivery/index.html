@@ -1,0 +1,7 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'delivery/css/style.css' %}">
+<h3>Welcome to Meal-Mate</h3>
+<div>
+  <a href="{% url 'delivery:sign_up' %}">Sign Up</a>
+  <a href="{% url 'delivery:sign_in' %}">Sign In</a>
+</div>

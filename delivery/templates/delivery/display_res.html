@@ -1,0 +1,125 @@
+{% extends "delivery/base.html" %}
+{% block content %}
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 30px;
+  }
+
+  thead tr {
+    background-color: #FF6B00;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  th, td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #f2f2f2;
+    text-align: center;
+  }
+
+  tbody tr:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  button {
+    padding: 10px 22px;
+    background-color: #0F1C2E;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #1a2a45;
+  }
+
+  @media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    thead tr {
+      display: none;
+    }
+
+    tbody tr {
+      margin-bottom: 20px;
+      background: #fff;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 15px;
+    }
+
+    tbody td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+      border: none;
+      border-bottom: 1px solid #eee;
+    }
+
+    tbody td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 20px;
+      width: 45%;
+      font-weight: 700;
+      text-align: left;
+      color: #555;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>Restaurant Name</th>
+      <th>Category</th>
+      <th>Rating</th>
+      <th>Image</th>
+      <th>Address</th>
+      <th>View Menu</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in li %}
+    <tr>
+      <td data-label="Restaurant Name">{{ item.Res_name }}</td>
+      <td data-label="Category">{{ item.Food_cat }}</td>
+      <td data-label="Rating">{{ item.rating }}/5</td>
+      <td data-label="Image">
+        <img src="{{ item.img }}" alt="Restaurant Image" height="100" width="100" />
+      </td>
+      <td data-label="Address">{{ item.address }}</td>
+      <td data-label="View Menu">
+        <a href="{% url 'delivery:view_menu' item.id %}">
+          <button>View Menu</button>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

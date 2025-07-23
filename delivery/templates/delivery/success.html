@@ -1,0 +1,33 @@
+<style>
+  h2 {
+    color: #FF6B00;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 50px;
+    text-align: center;
+  }
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .links a {
+    text-decoration: none;
+    background-color: #FF6B00;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  .links a:hover {
+    background-color: #e85c00;
+  }
+</style>
+
+<h2>Login Success</h2>
+<div class="links">
+  <a href="{% url 'delivery:add_res' %}">Add Restaurants</a>
+  <a href="{% url 'delivery:display_res' %}">Show all Restaurants</a>
+</div>
